@@ -1,0 +1,41 @@
+====== Brotduino Synth Simple ======
+
+{{ :projekte:digiwerkstatt:brotduino-synth-simple-schematic.jpg?direct&310|}}
+{{ :projekte:digiwerkstatt:img_4330.jpg?direct&310|}}
+{{ :projekte:digiwerkstatt:img_4331.jpg?direct&310|}}
+
+Einfacher Synthesizer basierend auf der Mozzi Bibliothek und einem 0,25 W verstärker. Die Klangqualität ist noch nicht super, weil ein einfacher RC Tiefpassfilter benutzt wird. Das Nachfolgeprojekt fügt einen aktiven Tiefpass-Filter ein.
+
+basiert auf [[brotduino tone]]
+
+FIXME Schaltplan und Fotos.
+
+===== Überlegungen =====
+
+  * {{http://www.ti.com/lit/ds/symlink/lm386.pdf}} Amplifier with Gain = 20 Minimum Parts
+
+Die Filterfrequenz für passive RC Tiefpass Filter ergibt sich mit der Formel ''f = 1/(2 pi R C)''. Als Filterfrequenz wird 8kHz oder sogar etwas weniger gebraucht. 
+
+
+
+
+===== Materialbedarf =====
+
+  * Ein Lautsprecher für niedrige Leistung, siehe Beispiele. Der kleine grüne Lautsprecher von Pollin hat den Vorteil, dass man ihn direkt auf eine Stiftleiste löten und dann senkrecht in das Steckbrett stecken kann. Das liefert einen soliden Aufbau.
+  * Staffelpreise bei den Widerständen beachten und lieber gleich etwas mehr kaufen. Die Preisangaben hier sind Einzelpreise als Worst-Case.
+
+<csv delim=;>
+Bezugsquelle;Bestellnummer;Einzelpreis;Stückzahl;Kommentar
+Pollin;640 805;0,25;1;Kleinlautsprecher 22002 8 Ohm 0,3 W
+Reichelt;BL 66;0,98;1;Lautsprecher 8 Ohm 0,5 W
+Reichelt;LM 386 DIP;0,34;1;Audioverstärker, DIP-8
+Reichelt;Z5U-2,5 220N;0,133;3;Vielschicht-Keramikkondensator 220N, 20%
+Reichelt;RAD 1.000/25;0,071;1;Elektrolytkondensator, 12,5x20mm, RM 5,0mm
+Reichelt;RAD 220/16;0,04;1;Elektrolytkondensator, 8x11mm, RM 3,5mm
+Reichelt;1/4W 10;0,103;1;Kohleschichtwiderstand 1/4W, 5%, 10 Ohm
+Reichelt;1/4W 270;0,103;1;Kohleschichtwiderstand 1/4W, 5%, 270 Ohm
+Reichelt;1/4W 1,0K;0,103;1;Kohleschichtwiderstand 1/4W, 5%, 1,0 K-Ohm
+Reichelt;1/4W 30K;0,103;1;Kohleschichtwiderstand 1/4W, 5%, 30 K-Ohm
+</csv>
+
+

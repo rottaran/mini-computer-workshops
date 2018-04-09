@@ -1,0 +1,19 @@
+====== Brotduino Lights ======
+
+{{ :projekte:digiwerkstatt:img_4336.jpg?direct&310|}}
+{{ :projekte:digiwerkstatt:img_4337.jpg?direct&310|}}
+{{ :projekte:digiwerkstatt:brotduino-leds.jpg?direct&310|}}
+{{ :projekte:digiwerkstatt:atmega328w.png?direct&310|}}
+
+basiert auf [[brotduino base]]
+
+===== Materialbedarf =====
+
+  * LEDs und Widerstände ca. 130 bis 330 Ohm aus der Grundausstattung
+
+==== optional ====
+
+<csv delim=;>
+Bezugsquelle;Bestellnummer;Einzelpreis;Stückzahl;Kommentar
+Pollin;120 840;0,50;1;LED-Anzeige ROHM LC-204VL, 4-stellig, rot
+</csv>

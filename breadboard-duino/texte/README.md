@@ -1,0 +1,1 @@
+alte Texte von meiner Webseite in Dokuwiki-Formatierung. Das kann verarbeitet werden und dann weg.

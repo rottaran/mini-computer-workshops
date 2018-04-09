@@ -1,0 +1,35 @@
+====== Brotduino Tone ======
+
+{{ :projekte:digiwerkstatt:img_4338.jpg?direct&310|}}
+{{ :projekte:digiwerkstatt:img_4339.jpg?direct&310|}}
+
+Einen Lautsprecher direkt anschließen und mit der Arduino Funktion ''tone(frequenz)'' Töne damit erzeugen. Ein wirklich minimaler Aufbau, der es immerhin schon ermöglicht, einstimmige Melodien zu spielen.
+
+basiert auf [[brotduino base]]
+
+===== Überlegungen =====
+
+Die typische 8 Ohm Impedanz ist der effektive Widerstand des Lautsprechers für ein 1kHz Sinus-Signal. Um eine gewünschte Leistung zu erreichen beschreibt dieser Widerstand das dafür notwendige Verhältnis von Spannung und Strom. Für Gleichspannung ist der Widerstand übrigens viel viel kleiner, was in der Regel zum Hitzetot des Lautsprechers führt.
+
+Umstellen der Gleichungen ''P = U * I'' und ''U = R * I'' nach I und einsetzen der gewünschten Werte (0,25 W 8 Ohm) ergibt ''I = sqrt(P/R)'', also I = 176 mA und U = 1,4 V. Wenn wir einen Strom von ca. 170 mA durch einen 8 Ohm Lautsprecher schicken, fällt an ihm eine Spannung von 1,4 V ab und er nimmt eine Leistung von 0,25 W auf.
+Aber Achtung, der ATmega kann nur 100mA pro Gruppe von Output-Pins liefern!
+
+Für die einfache Schaltung brauchen wir einen Vorwiderstand, der den Strom durch den Lautsprecher begrenzt. Dies lässt sich analog zu den Vorwiderständen bei LEDs berechnen. Mit ''U_in - U_last = R * I'' ergibt sich für den Vorwiderstand ''R = (U_in - U_last)/I'', also 20 Ohm für 176mA. Um nicht über die 100mA zu kommen, ist ein Vorwiderstand von mindestens 40 Ohm notwendig. Unsere Erfahrung zeigt, dass 100 Ohm noch immer Laut genug ist.
+
+FIXME Erklärung des Kondensators. Unerwünschte Funktion als Hochpass.
+
+===== Aufbau =====
+
+Pin 15 zu Widerstand, Widerstand zu Kondensator, Kondensator zu Lautsprecher, Lautsprecher zu Masse. Das ist alles.
+
+===== Materialbedarf =====
+
+  * Ein Lautsprecher für niedrige Leistung, siehe Beispiele. Der kleine grüne Lautsprecher von Pollin hat den Vorteil, dass man ihn direkt auf eine Stiftleiste löten und dann senkrecht in das Steckbrett stecken kann. Das liefert einen soliden Aufbau.
+  * Vorwiderstand zur Leistungsbegrenzung, zum Beispiel 68 bis 100 Ohm
+  * optional auch ein Kondensator zum Schutz vor Gleichstrom, zum Beispiel 220uF. Der wird für den Lautsprecher in unseren anderen Brotduino-Projekten wiederverwendet.
+
+<csv delim=;>
+Bezugsquelle;Bestellnummer;Einzelpreis;Stückzahl;Kommentar
+Pollin;640 805;0,25;1;Kleinlautsprecher 22002 8 Ohm 0,3 W
+Reichelt;BL 66;0,98;1;Lautsprecher 8 Ohm 0,5 W
+</csv>

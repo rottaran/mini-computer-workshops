@@ -1,0 +1,21 @@
+==== Grundausstattung ====
+
+{{ :projekte:digiwerkstatt:werkzeuge.jpg?direct&310|}}
+
+<csv delim=;>
+Bezugsquelle;Bestellnummer;Einzelpreis;Stückzahl;Kommentar
+Conelek;100405;15,19;X;Drahtbrücken für Steckplatinen Set 350 Stück
+Conelek;103453;4,50;X;Testkabel flexibel Pin d:0,6 mm - Pin d:0,6 mm ca. 75St. verschiedene Farben verschiedene Längen
+Reichelt;K/CAP1;10,85;1;Set: Keramikkondensatoren, 224-teilig
+Reichelt;K/RES-E12;7,75;1;Set: E12-Widerstände, 610-teilig
+Reichelt;K/CAP2;8,95;1;Set: Elektrolytkondensatoren, 120-teilig
+Reichelt;K/LED1;9,15;1;Set: LED, 80-teilig
+Reichelt;SL 1X40G 2,54;0,18;4;40pol. Stiftleiste, gerade, RM 2,54
+Reichelt;SL 1X40W 2,54;0,30;2;40pol. Stiftleiste, gewinkelt, RM 2,54
+</csv>
+
+  * ca. drei Personen können sich ein Drahtbrückenset teilen. Von den flexiblen Testkabeln braucht man meist nicht so viele, weil die auf Dauer doch zu wackelig sind.
+  * LED alternative bei Reichelt: [[http://www.reichelt.de/S36/3/index.html?&ACTION=3&LA=446&ARTICLE=119303&artnr=S36&SEARCH=led+set|S36 :: Set: LED, 30-teilig für 1,60€]]
+  * Flachzangen und Kneifzangen
+  * kleine Schraubenzieher zum vorsichten raushebeln von Chips
+  * Die Stiftleisten sind hervorragend um Kabel und kleine Adapter-Platinen auf das Steckbrett stecken zu können

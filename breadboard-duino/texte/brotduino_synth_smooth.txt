@@ -1,0 +1,46 @@
+====== Brotduino Synth Smooth ======
+
+{{ ag:digitaltechnik:dsc01093-fb.jpg?direct&310|}}
+{{ :projekte:digiwerkstatt:img_4334.jpg?direct&310|}}
+{{ :projekte:digiwerkstatt:img_4335.jpg?direct&310|}}
+
+{{ ag:digitaltechnik:201405017-tiefpass.jpg?310&direct|}}
+
+basiert auf [[brotduino_synth_simple]]
+
+  * http://www.beis.de/Elektronik/Filter/ActiveLPFilter.html
+  * {{http://www.ti.com/lit/ds/symlink/lm158-n.pdf}}
+
+===== Notizen =====
+
+> Ich würde das nicht mit dem Spannungsteiler vor dem aktiven Tiefpass kombinieren, denn die kleinen Pegel nahe 0V werden ja auch abgeschnitten.
+Liegt am OPAmp. Da das kein Rail-to-Rail OPAmp ist arbeitet der grob von 0,7V bis 4,3V (wenn mit 5V versorgt). Was du bei dir machen kannst ist:
+Controller
+Spannungsteiler, um PWM auf max. 3Vp-p zu bekommen
+Entkoppeln (Kondensator) <- "neutralisiert" deine Spannung. Ohne nachfolgende Schaltung wird aus den 3V ±1,5V
+Offet von Vcc/2 reinbringen (jeweils ca. 10k nach Vcc und Masse) <- hier hast du 2,5V (aus Offset) ± 1,5V (aus PWM)
+Filter
+Damit bewegst du dich in den Spezifikationen des OPAmp und es wird nichts abgeschnitten. 
+
+===== Materialbedarf =====
+
+  * zusätzlich zu dem Material aus [[brotduino_synth_simple]].
+  * Staf­fel­prei­se bei den Wi­der­stän­den be­ach­ten und lie­ber gleich etwas mehr kau­fen. Die Preis­an­ga­ben hier sind Ein­zel­prei­se als Worst-Ca­se.
+  * Die Metallschichtwiderstände haben eine höhere Fertigungsgenauigkeit. Das ist für Widerstände in mehrstufigen Filtern hilfreich. Die Einzelpreise sind zwar niedriger als bei den Kohleschichtwiderständen, aber dies kehr sich bei >10 Stück um.
+  * Ein Oszilloskop ist nützlich.
+
+<csv delim=;>
+Bezugsquelle;Bestellnummer;Einzelpreis;Stückzahl;Kommentar
+Reichelt;LM 358 DIP;0,17;1;Operationsverstärker, 2-fach, DIP-8
+Reichelt;1/4W 560;0,103;3;Kohleschichtwiderstand 1/4W, 5%, 560 Ohm
+Reichelt;1/4W 10K;0,103;1;Kohleschichtwiderstand 1/4W, 5%, 10 K-Ohm
+Reichelt;METALL 6,80K;0,082;1;Metallschichtwiderstand 6,80 K-Ohm
+Reichelt;METALL 7,50K;0,082;1;Metallschichtwiderstand 7,50 K-Ohm
+Reichelt;METALL 15,0K;0,082;1;Metallschichtwiderstand 15,0 K-Ohm
+Reichelt;METALL 10,2K;0,082;1;Metallschichtwiderstand 10,2 K-Ohm
+Reichelt;METALL 9,10K;0,082;1;Metallschichtwiderstand 9,10 K-Ohm
+Reichelt;KERKO 560P;0,06;1;Keramik-Kondensator 560P 
+Reichelt;X7R-2,5 6,8N;0,09;1;Vielschicht-Keramikkondensator 6,8N, 10%
+Reichelt;X7R-2,5 1,0N;0,09;1;Vielschicht-Keramikkondensator 1,0N, 10%
+Reichelt;X7R-2,5 3,3N;0,09;2;Vielschicht-Keramikkondensator 3,3N, 10%
+</csv>

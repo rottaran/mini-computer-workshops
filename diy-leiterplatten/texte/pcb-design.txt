@@ -1,0 +1,33 @@
+{{ :projekte:digiwerkstatt:kicad-layout.jpg?300|}}
+====== Eigene Module/Bausteine entwerfen ======
+
+Auf den Steckbrettern kannst Du viele Ideen schnell ausprobieren. Allerdings passen nicht alle interessanten Bauteile direkt aufs Steckbrett -- ein kleiner Adapter muss her! Und wenn nach dem Experimentieren endlich alles klappt, willst Du daraus vielleicht ein wiederverwendbares Modul machen welches sich leicht in zukünftige Projekte integrieren lässt.
+
+Dazu kannst Du mit uns in die Welt des computer-gestützten Designs (CAD) einsteigen. Mit der Software [[http://kicad-pcb.org/|KiCAD]] erstellen wir einen Schaltplan basierend auf dem Steckbrett-Versuch und platzieren anschließend die Bauteile auf der Leiterplatte. Als Ergebnis bekommst Du einen druckbaren Bauplan der im nächsten Schritt zur Produktion Deines Moduls verwendet wird.
+
+===== 1) Schaltplan entwerfen =====
+
+{{ :projekte:digiwerkstatt:motor1-l6219-20160214-2schem.png?300|}}
+
+FIXME
+
+===== 2) Bauteile platzieren und verbinden =====
+
+{{ :projekte:digiwerkstatt:motor1-l6219-20160214-2pcb.png?300|}}
+
+FIXME
+
+Designregeln für die Leiterbahnen, die bei uns zuverlässig herstellbar waren:
+  * mindestens 0,4mm Leiterbahnabstand. Wenn wir später den Entwurf drucken und auf die Leiterplatte bügeln, verschwimmt der Toner durch die Hitze und es entstehen ungewollte Verbindungen. Das lässt sich zwar vor dem Ätzen wegkratzen, macht aber zusätzliche Arbeit.  
+  * mindestens 0,4mm Leiterbahndicke, besser sind 0,6mm. Wo immer möglich, sollten die Leiterbahnen lieber noch dicker sein, z.B. 1mm. Dann gibt es weniger Schwierigkeiten beim Bestücken.
+  * 0,2mm Via-Bohrdurchmesser. Wir haben keine so dünnen Bohrer und nehmen meist 0,6mm Drähte. Das Bohrloch wird aber nur als Markierung gebraucht, damit wir später sehen, wo wir Löcher bohren müssen.
+  * 1,2mm bis 2mm Via-Durchmesser, damit genug Platz zum anlöten ist.
+  * 0,2mm Bohrungen in den Pads der Bauteile. Die benutzen wir nur als Markierung zum manuellen bohren.
+  * Pads so groß wie möglich macht das Löten einfacher. Wenn Leiterbahnen zwischen Pads durch müssen, sollten Ovale Pads (mehr lang als breit) verwendet werden.   
+
+===== 3) Platinenmaße und Druckvorbereitung =====
+
+FIXME
+
+===== Drucken, Ätzen, Bestücken... =====
+
