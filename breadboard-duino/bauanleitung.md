@@ -8,11 +8,11 @@ Der zweite wichtige Bestandteil ist ein USB-zu-Seriell Adapter der unseren Mini-
 
 Hinzu kommen einige Drahtverbindungen und ein paar Hilfsbauteile. Im Folgenden wird ihre Platzierung und ihre Rolle in unserem Mini-Computer beschrieben. Die Erklärungen zu Hintergründen der Bauteile sind in separaten Unterabschnitten und können bei Ungeduld oder Zeitmangel übersprungen werden.
 
-## Schaltplan
+## Schaltplan im Überblick
 
 ![Schaltplan](030-base-schematic.jpg)
 
-Auf dem Schaltplan ist zu sehen, welche Beine der Bauteile über Drahtbrücken miteinander verbunden werden müssen. Zudem sind die Teile genau wie auf dem Steckbrett angeordnet. Der Übersichtlichkeit zuliebe sind nicht alle Löcher des Steckbretts gezeichnet. Die Löcher sind jeweils in jeder Zeile auf der linken sowie separat auf der rechten Hälfte des Steckbretts miteinander verbunden. Da kann jedes Loch der selben Zeile gleichberechtigt benutzt werden -- es muss also nicht unbedingt das Loch direkt neben dem Bauteil-Beinchen sein. 
+Auf dem Schaltplan ist zu sehen, welche Beine der Bauteile über Drahtbrücken miteinander verbunden werden müssen. Zudem sind die Teile genau wie auf dem Steckbrett angeordnet. Der Übersichtlichkeit zuliebe sind nicht alle Löcher des Steckbretts gezeichnet. Die Löcher sind jeweils in jeder Zeile auf der linken sowie separat auf der rechten Hälfte des Steckbretts miteinander verbunden. Da kann jedes Loch der selben Zeile gleichberechtigt benutzt werden -- es muss also nicht unbedingt das Loch direkt neben dem Bauteil-Beinchen sein.
 
 Ganz links und ganz rechts hat das Steckbrett je eine + und eine - Spalte für die Stromversorgung. Die Löcher der + Spalte sind miteinander verbunden sowie die Löcher der - Spalte. Wir werden später Drahtbrücken hinzufügen, um die linke + Spalte mit der rechten + Spalte zu verbinden.
 
@@ -30,12 +30,12 @@ Jetzt können wir links (Spalte A-D) die Löcher des Steckbretts verwenden, um V
 
 Um Daten und Programme zwischen unserem Computer und den Micro-Controller übertragen zu können, verbinden wir den Micro-Controller mit dem USB-Adapter: Eine Drahtbrücke von der Zeile mit dem RX-Beinchen des USB-Adapters zu der Zeile mit dem TX-Beinchen des Micro-Controllers. Ebenso von dem TX des USB-Adapters zum RX des Micro-Controllers.
 
+Achtung: Manche USB-Serial Adapter haben die Beschriftung RX und TX vertauscht, so dass RX vom USB-Adapter mit RX vom Micro-Controller und TX mit TX verbunden werden müssen. Bei unbekannten Adaptern hilft ausprobieren.
+
 
 ### Von TX nach RX
 
 RX steht für Receive, also Empfangen, und TX für Transmit, also Senden. In der einen Kommunikationsrichtung sendet also der Micro-Controller Signale auf das TX-Beinchen. Durch die Drahtbrücke kommen diese Signale zum RX-Bein des USB-Adapters. Diese Empfängt die Signale, und übersetzt sie in USB-Signale für die Verbindung über die USB-Leitung zum großen Computer. In die andere Richtung empfängt der USB-Adapter USB-Signale vom Computer, übersetzt diese in ein einfacheres Signal zum Senden auf seinem TX-Bein. Das ist über die Drahtbrücke mit dem RX-Bein des Micro-Controllers verbunden, so dass dieser das Signal empfängt.
-
-Achtung: Manche USB-Serial Adapter haben die Beschriftung RX und TX vertauscht, so dass RX vom USB-Adapter mit RX vom Micro-Controller und TX mit TX verbunden werden müssen. Bei unbekannten Adaptern hilft ausprobieren.
 
 
 ### Asynchrone Serielle Übertragung
@@ -63,14 +63,46 @@ Die Netzwerkkarte und die Graphikkarte im Computer sind über Leitungen basieren
 
 ## Schritt 3) Stromversorgung verbinden
 
+Das "GND" Beinchen des USB-Adapters wird über eine Drahtbrücke mit der linken - Spalte verbunden (meist blau markiert). Das "5V" Beinchen des USB-Adapters mit der linken + Spalte (meist rot markiert).
+
+Dann kommen zwei lange Drahtbrücken, um die linke + Spalte mit der rechten + Spalte zu verbinden und ebenso die linke - Spalte mit der rechten - Spalte. Nun sind die senkrechten Strom-Spalten des Steckbretts mit der Stromquelle aus dem USB-Adapter verbunden.
+
+Als nächstes kann nun der Micro-Controller mit Strom versorgt werden. Dazu von der + Spalte eine Drahtbrücke zu der Zeile in der das "VCC" Beinchen des Micro-Controllers steckt. Und von der - Spalte eine Drahtbrücke zu der Zeile in der das "GND" Beinchen des Micro-Controllers steckt.
 
 
+### GND, Ground, Masse, Erde, 0V und so
 
-## Schritt 4) Automatischer Neustart
+TODO
 
+
+## Schritt 4) Energiepuffer in der Stromversorgung
+
+Ein 100nF Kondensator (C2) verbindet die beiden Zeilen des VCC und GND Beinchen des Micro-Controllers.
+
+### Kondensatoren als Energiespeicher
+
+Die Aufgabe des Kondensators C2 ist es, elektrische Energie aus der Energieversorgung zu speichern und vor Ort an den Micro-Controller abzugeben, wenn dieser Energie braucht. Das ist ähnlich wie ein Wasser-basiertes Pumpspeicherkraftwerk das bei Verbrauchsspitzen im Stromnetz für kurze Zeit eingeschaltet wird.
+
+Elektrische Kondensatoren sind zwei Metallplatten mit einem isolierenden Material dazwischen. Wenn man einen elektrische Spannungsunterschied an den Platten erzeugt, baut sich zwischen beiden ein elektrisches Kraftfeld auf und dieses speichert elektrische Energie. Dieser Spannungsunterschied entsteht wenn wir eine der Platten mit dem + und die andere mit dem - unserer Stromquelle verbinden.
+
+Die gespeicherte Energie wächst mit dem Spannungsunterschied zwischen beiden Platten. Wird der Unterschied kleiner, wird auch das Feld schwächer und es gibt elektrische Energie zurück in den Stromkreis. Genau dies passiert wenn der Prozessor kurzzeitig Energie braucht. Dann fließt elektrischer Strom aus dem Kondensator wie aus einer kleinen Batterie in den Prozessor. Später lädt sich der Kondensator über unsere eigentliche Stromversorgung wieder auf.
+
+
+### Prozessoren arbeiten in Schritten
+
+Der Prozessor besteht im Prinzip aus einem Kreislauf in dem sich Zwischenspeicher (sogenannte Register) und Logikbausteine (z.B. UND-, ODER-Verknüpfungen und logische Negation) abwechseln. In jedem Arbeitsschritt lesen die Logikbausteine aus ihren Eingangsregistern, verknüpfen die Informationen und schreiben das Ergebnis in ihr Ausgangsregister.
+
+Dies passiert dadurch das elektrischer Strom fließt, der die vielen kleinen elektrischen Schalter, die Transistoren, auf dem Weg von Eingangsregister zu Ausgangsregister passend umschaltet. Das passiert im Wesentlichen am Anfang jedes Arbeitsschritts. Die restliche Zeit bis zum nächsten Arbeitsschritt besteht vor allem aus Warten auf die langsamsten Transistoren oder den längsten Pfad von Ein- zu Ausgangsregister. Dadurch verbraucht der Prozessor am Anfang eines jeden Arbeitsschritts viel elektrische Energie und dann wieder ganz wenig.
+
+Dieser ungleichmäßige Energieverbrauch führt dazu, dass am Anfang jeden Arbeitsschritts viel Strom durch den Micro-Controller fließt und dann wieder sehr wenig. Diese Änderungen des Stromflusses sind nicht schön, weil sie auf dem kompletten Weg wie bei einer Antenne elektro-magnetische Wellen in die Welt strahlen. Die können uns dann an anderen Stellen wieder stören. Dieser Strom fließt aus der Stromquelle im Computernetzteil über den 5V-Draht im USB-Kabel, die beiden Drahtbrücken von "5V" Bein am USB-Adapter zur + Spalte des Steckbretts und von dort zum "VCC" Bein des Micro-Controller. Und dann wieder über das "GND" Bein, die - Spalte, das GND-Bein am USB-Adapter und den GND-Draht im USB-Kabel zurück.
+
+Der kleine Kondensator am VCC und GND Beinchen des Micro-Controllers sorgt für einen kontinuierlicheren Stromverbrauch und verringert die störenden Abstrahlungen.
 
 
 ## Schritt 5) 16MHz Taktgenerator anschließen
 
 
-## Schritt 6) Stromversorgung für den Analog-Spannungsmesser
+## Schritt 6) Automatischer Neustart
+
+
+## Schritt 7) Stromversorgung für den Analog-Spannungsmesser
