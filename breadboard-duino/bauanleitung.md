@@ -12,6 +12,12 @@ Hinzu kommen einige Drahtverbindungen und ein paar Hilfsbauteile. Im Folgenden w
 
 ![Schaltplan](030-base-schematic.jpg)
 
+Auf dem Schaltplan ist zu sehen, welche Beine der Bauteile über Drahtbrücken miteinander verbunden werden müssen. Zudem sind die Teile genau wie auf dem Steckbrett angeordnet. Der Übersichtlichkeit zuliebe sind nicht alle Löcher des Steckbretts gezeichnet. Die Löcher sind jeweils in jeder Zeile auf der linken sowie separat auf der rechten Hälfte des Steckbretts miteinander verbunden. Da kann jedes Loch der selben Zeile gleichberechtigt benutzt werden -- es muss also nicht unbedingt das Loch direkt neben dem Bauteil-Beinchen sein. 
+
+Ganz links und ganz rechts hat das Steckbrett je eine + und eine - Spalte für die Stromversorgung. Die Löcher der + Spalte sind miteinander verbunden sowie die Löcher der - Spalte. Wir werden später Drahtbrücken hinzufügen, um die linke + Spalte mit der rechten + Spalte zu verbinden.
+
+Achtung: Manche Steckbretter sind zusätzlich in eine untere und obere Hälfte geteilt. Dann sind die Löcher der + Spalte oben und der + Spalte unten nicht miteinander verbunden, ebenso bei den anderen Spalten der Stromversorgung. In diesem Fall brauchen wir kurze Drahtbrücken von oben nach unten, um diese Spalten jeweils miteinander zu verbinden.
+
 
 ## Schritt 1) USB-Adapter und Micro-Controller platzieren
 
