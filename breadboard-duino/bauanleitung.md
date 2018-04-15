@@ -8,6 +8,10 @@ Der zweite wichtige Bestandteil ist ein USB-zu-Seriell Adapter der unseren Mini-
 
 Hinzu kommen einige Drahtverbindungen und ein paar Hilfsbauteile. Im Folgenden wird ihre Platzierung und ihre Rolle in unserem Mini-Computer beschrieben. Die Erklärungen zu Hintergründen der Bauteile sind in separaten Unterabschnitten und können bei Ungeduld oder Zeitmangel übersprungen werden.
 
+## Schaltplan
+
+![Schaltplan](030-base-schematic.jpg)
+
 
 ## Schritt 1) USB-Adapter und Micro-Controller platzieren
 
