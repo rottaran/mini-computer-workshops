@@ -1,5 +1,7 @@
 # Bauanleitung Steckbrett-Duino
 
+<img align="right" width="300" src="010-breadboard-duino.jpg">
+
 Der Arduino Uno (https://store.arduino.cc/arduino-uno-rev3) ist ein Mini-Computer, der sich Dank der Arduino-Umgebung sehr leicht programmieren lässt. Aber ohne Erweiterungsplatinen ist der Arduino an sich sehr langweilig. Wir bauen stattdessen so einen Arduino selber auf einem Steckbrett nach und haben dann auf diesem Steckbrett noch viel Platz für eigene Erweiterungen.
 
 Der Kopf des Arduino-Nachbaus ist der ATmega328P Micro-Controller. Dieser enthält einen Prozessor der unsere Programme abarbeiten kann, Speicher um sich unser Programm und den aktuellen Zustand merken zu können, sowie einige Ein-Ausgabe-Beinchen über die der Micro-Controller mit der Außenwelt und unseren Erweiterungen interagieren kann.
@@ -10,7 +12,7 @@ Hinzu kommen einige Drahtverbindungen und ein paar Hilfsbauteile. Im Folgenden w
 
 ## Schaltplan im Überblick
 
-![Schaltplan](030-base-schematic.jpg)
+<img align="right" width="300" src="030-base-schematic.jpg">
 
 Auf dem Schaltplan ist zu sehen, welche Beine der Bauteile über Drahtbrücken miteinander verbunden werden müssen. Zudem sind die Teile genau wie auf dem Steckbrett angeordnet. Der Übersichtlichkeit zuliebe sind nicht alle Löcher des Steckbretts gezeichnet. Die Löcher sind jeweils in jeder Zeile auf der linken sowie separat auf der rechten Hälfte des Steckbretts miteinander verbunden. Da kann jedes Loch der selben Zeile gleichberechtigt benutzt werden -- es muss also nicht unbedingt das Loch direkt neben dem Bauteil-Beinchen sein.
 
@@ -109,6 +111,8 @@ An die beiden XTAL-Beinchen des Micro-Controllers wird ein 16MHz Schwingquarz (Q
 ### 16 Millionen Arbeitsschritte pro Sekunde
 
 Der Micro-Controller hat einen internen Taktgenerator der auf verschiedene Frequenzen wie z.B. 8MHz, 16MHz und höchstens 20MHz eingestellt werden kann. Allerdings läuft er nicht sehr genau. Das würde zum Beispiel Zeitmessungen und Wartezeiten in unseren Programmen ungenau machen. Schlimmer noch: Wenn der Taktgenerator zu schnell läuft, kann es passieren, dass der nächste Arbeitsschritt schon beginnt bevor alle Ergebnisse des vorherigen Arbeitsschritts fertig gespeichert sind. Das würde zu falschen Rechenergebnissen und vielem merkwürdigen Verhalten unseres Mini-Computer führen.
+
+<img align="right" width="300" src="https://upload.wikimedia.org/wikipedia/commons/8/84/Quarzhalter.JPG">
 
 Der Schwingquarz stabilisiert die Schwingung des Taktgenerators. 16MHz sind 16 Millionen Schwingungen pro Sekunde, also ein Arbeitsschritt alle 62.5ns Nanosekunden. Zum Vergleich: Unsere heutigen Computer laufen je nach Arbeitslast mit 1 bis 4 GHz. Ein GHz entspricht einem Arbeitsschritt jede 1ns. Und bei 4GHz wäre ein Arbeitsschritt nur noch 0.25ns lang. Dahingegen ist unser Mini-Computer mit 16MHz recht langsam -- aber immer noch schnell genug für viele einfache Aufgaben.
 
