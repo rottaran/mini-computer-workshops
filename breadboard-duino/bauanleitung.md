@@ -72,7 +72,9 @@ Als nächstes kann nun der Micro-Controller mit Strom versorgt werden. Dazu von 
 
 ### GND, Ground, Masse, Erde, 0V und so
 
-TODO
+Elektrische Spannungen sind Unterschiede im Überschuss oder Mangel an Elektronen zwischen zwei Orten. Die Spannung ist also immer relativ zu einem mehr oder weniger beliebig gewählten Bezugspunkt. Die Erde wird gerne als Bezugspunkt genommen und hat dann die Spannung "0V" -- also keinen Unterschied zur Erde. Auf Englisch übersetzt ist das "Ground" und abgekürzt "GND".
+
+Weil die Erde einen unerschöpflich erscheinenden Vorrat an frei beweglichen Elektronen hat, wird auch das Symbol "-" benutzt. Minus als Überschuss an negativ geladenen Elektronen. Positive Spannungen wie z.B. 5V werden mit + gekennzeichnet, auch wenn dort genau genommen Elektronen fehlen. Vielleicht weil dort Überschuss an positiv geladenen Protonen ist?
 
 
 ## Schritt 4) Energiepuffer in der Stromversorgung
@@ -101,8 +103,65 @@ Der kleine Kondensator am VCC und GND Beinchen des Micro-Controllers sorgt für 
 
 ## Schritt 5) 16MHz Taktgenerator anschließen
 
+An die beiden XTAL-Beinchen des Micro-Controllers wird ein 16MHz Schwingquarz (Q1) angeschlossen. Je ein Bein in ein Loch der oberen Zeile und das andere Bein in die Zeile darunter. Um die Schwingung zu unterstützen kommen noch zwei 22pF Kondensatoren (C3, C4) dazu. Diese sind auf der einen Seite mit der - Spalte verbunden und auf der anderen mit jeweils einer der XTAL-Zeilen.
+
+
+### 16 Millionen Arbeitsschritte pro Sekunde
+
+Der Micro-Controller hat einen internen Taktgenerator der auf verschiedene Frequenzen wie z.B. 8MHz, 16MHz und höchstens 20MHz eingestellt werden kann. Allerdings läuft er nicht sehr genau. Das würde zum Beispiel Zeitmessungen und Wartezeiten in unseren Programmen ungenau machen. Schlimmer noch: Wenn der Taktgenerator zu schnell läuft, kann es passieren, dass der nächste Arbeitsschritt schon beginnt bevor alle Ergebnisse des vorherigen Arbeitsschritts fertig gespeichert sind. Das würde zu falschen Rechenergebnissen und vielem merkwürdigen Verhalten unseres Mini-Computer führen.
+
+Der Schwingquarz stabilisiert die Schwingung des Taktgenerators. 16MHz sind 16 Millionen Schwingungen pro Sekunde, also ein Arbeitsschritt alle 62.5ns Nanosekunden. Zum Vergleich: Unsere heutigen Computer laufen je nach Arbeitslast mit 1 bis 4 GHz. Ein GHz entspricht einem Arbeitsschritt jede 1ns. Und bei 4GHz wäre ein Arbeitsschritt nur noch 0.25ns lang. Dahingegen ist unser Mini-Computer mit 16MHz recht langsam -- aber immer noch schnell genug für viele einfache Aufgaben.
+
+Der Schwingquarz ist aus einem Quarzkristall geschnitten. Das ist ein merkwürdiges Gestein mit dem sogenannten Piezo-Elektrischen Effekt: Wenn man es verbiegt, schubst das verbogene Kristallgitter Elektronen auf eine Seite, so dass eine elektrische Spannung zwischen den Seiten entsteht. Dies wird zum Beispiel in elektronischen Wagen benutzt, um Gewichte anhand der erzeugten Spannung bestimmen zu können. Und wenn man eine elektrische Spannung an das Quarzkristall anlegt, so verbiegt es sich. Dies wird zum Beispiel bei Piezo-Lautsprechern benutzt.
+
+Im Schwingquarz wird die Wechselwirkung zwischen elektrischer Spannung und dem Verbiegen des Kristalls ausgenutzt. Die Resonanzfrequenzen des Kristalls hängen nämlich im wesentlichen von den geometrischen Abmessungen des Kristalls ab. Unser Kristall ist so geschnitten, dass es bevorzugt bei 16MHz schwingt.
+
+Im Englischen wird der Schwingquarz als Crystal bezeichnet und mit "XTAL" abgekürzt. "Cross-tal" klingt doch mit viel Phantasie ein bisschen wie Kristall, oder?
+
 
 ## Schritt 6) Automatischer Neustart
 
+Unser Micro-Controller hat noch ein Problem: Kommen über die Serielle Verbindung (RX-Bein) Daten für das gerade laufende Programm oder soll ein neues Programm übertragen werden? Die Arduino-Lösung ist recht clever: Falls direkt nach dem Neustart des Micro-Controllers Daten kommen, ist es ein neues Programm das in den Speicher geschrieben werden soll. Falls aber eine Sekunde lange nichts kommt, dann wird das aktuell gespeicherte Programm gestartet und dieses kann nun unsere eigenen Daten auf der selben seriellen Leitung empfangen.
+
+Nun braucht es nur noch einen Weg, um den Micro-Controller im "richtigen" Moment neu starten zu können: Dies wird mit dem 100nF Kondensator (C1) und dem 10kOhm Widerstand (R1) erreicht. Der Widerstand verbindet die senkrechte + Spalte mit der Zeile in dem das Reset-Beinchen (RST) des Micro-Controllers steckt. Der Kondensator verbindet die RST-Zeile mit der Zeile in der das DTR-Beinchen des USB-Adapters steckt.
+
+
+### Von Data-Transmission-Ready zum Neustarten
+
+Das DTR-Beinchen des USB-Adapters steht für "Data Transmission Ready", auf Deutsch "Daten-Transfer beginnt". Normalerweise ist es auf HIGH-Spannung, was am USB-Adapter 3.3V ist. Solange am Computer ein Programm die serielle Verbindung des USB-Adapters öffnet, wechselt das DTR-Beinchen auf LOW-Spannung, also 0V.
+
+Der Wechsel von 3.3V zu 0V am DTR-Beinchen führt dazu, dass der Spannungsunterschied zwischen den beiden Beinen des Kondensators (C1) größer wird und deswegen das elektrische Feld im Kondensator wachsen will. Dies führt dazu, dass ein Aufladestrom von der + Spalte (5V) über den 10kOhm Widerstand (R1) in den Kondensator fließt.
+
+Der Kondensator lädt sich aber schneller auf als Strom über den Widerstand nachfließen kann. Deswegen bricht für einen Moment die Spannung in der Mitte zwischen Widerstand und Kondensator zusammen auf fast 0V. Genau dort ist das RST-Bein des Micro-Controllers angeschlossen. Dieser kurzzeitige Wechsel der Spannung auf fast 0V sorgt dafür, dass der Micro-Controller einen Reset macht, also neu startet.
+
+Am Ende der Datenübertragung wechselt DTR von 0V zurück auf 3.3V. Der Spannungsunterschied wird kleiner und nun ist im Kondensator das elektrische Feld zu groß, er entlädt sich. Das sich verkleinernde elektrische Feld führt zu einer höheren Spannung am RST-Bein (5V+3.3V), bis die überschüssige Energie wieder über den Widerstand R1 und die Schutzschaltung im RST-Anschluss abgeflossen ist. Dem RST-Bein ist das zum Glück egal.
+
 
 ## Schritt 7) Stromversorgung für den Analog-Spannungsmesser
+
+Der Micro-Controller hat 6 Analog-Eingänge (A0 bis A5) an denen er kleine Spannungen relativ zum GND Anschluss messen kann. Um die Messgenauigkeit verbessern zu können, haben die Analog-Digital-Wandler eine separate Stromversorgung an den zwei AVCC und AGND Beinchen auf der rechten Seite.
+
+Die einfachste Variante für die Analog-Stromversorgung ist, eine Drahtbrücke von der - Spalte zur Zeile mit dem GND-Beinchen und eine Drahtbrücke von der + Spalte zur Zeile mit dem AVCC-Beinchen.
+
+Manche Anleitungen empfehlen einen Tiefpass-Filter der hoch-frequente störende Schwingungen aus der Stromversorgung herausfiltert. Dazu wird anstelle der Drahtbrücke von der + Spalte zur AVCC-Zeile eine Drosselspule (L1, z.B. 68mH) eingesetzt, sowie ein 100nF Kondensator (C5) von der GND-Zeile zur AVCC-Zeile. Die Drahtbrücke von der - Spalte zur AGND-Zeile bleibt bestehen.
+
+
+### Tiefpass-Filter aus Spulen und Kondensatoren
+
+Die 5V Gleichspannung, die wir vom USB-Adapter bekommen, ist gar nicht so konstant wie man denken würde. Die Spannung schwankt durch etwas durch den schwankenden Stromverbrauch des Micro-Controllers, des USB-Adapters und anderer Komponenten zwischen Netzteil und USB-Kabel. Zudem sind oft noch Reste der 50Hz Netzfrequenz den 5V beigemischt, weil das Computernetzteil die nicht perfekt weg-geglättet hat. Den meisten USB-Geräten ist das ja auch egal -- nur bei den Spannungsmessungen kann das auffallen.
+
+Wenn elektrischer Strom durch einen Draht fließt, baut sich um den Draht ein Magnetfeld auf. Dieses speichert Energie ähnlich wie beim elektrischen Feld im Kondensator. Wird der Draht zu einer Spule aufgewickelt, verstärkt dies das Magnetfeld durch die vielen parallel liegenden Drahtabschnitte. Das magnetische Feld wächst und schrumpft abhängig vom Stromfluss. Änderungen im Stromfluss führen zu einer Änderung des Magnetfelds und die dafür notwendige Energie wird aus dem elektrischen Strom genommen. Dies wirkt als Widerstand auf sich verändernde Ströme. Dieser Widerstand wächst mit der Frequenz der Stromschwankungen. Hohe Frequenzen fließen schlecht durch die Spule.
+
+Der Kondensator reagiert auf Schwankungen der Spannung. Bei steigender Spannung wächst das elektrische Feld im Kondensator. Dies nimmt dabei Energie auf, so dass die Spannung weniger stark anwächst als ohne Kondensator. Eine andere Betrachtungsweise ist, dass schnelle Spannungsschwankungen den Kondensator besser Auf- und Entladen als langsame Schwankungen. Es fließt mit steigender Frequenz also ein größer werdender Strom über den Kondensator. Für hochfrequente Spannungsschwankungen ist der Kondensator ein kleiner Widerstand, so dass diese nach Ground abfließen.
+
+Für hohe Frequenzen ist die Spule vom + der Stromquelle zum AVCC des Micro-Controllers ein großer Widerstand und der Kondensator von AVCC zu GND ein kleiner Widerstand. Hoch-frequente Schwankungen werden daher unterdrückt, so dass die Spannung an AVCC stabiler ("konstanter") ist.
+
+Wechselwirkungen zwischen Spule und Kondensator können dazu führen, dass elektrische Energie zwischen beiden hin- und her schwingt. Das wäre nicht gewünscht. Die Drosselspulen sind deswegen so gebaut, dass sie die Energie im magnetischen Feld nicht perfekt speichern und wieder abgeben, sondern möglichst viel davon in Wärme umwandeln.
+
+### Schwingen im Gleichtakt
+
+Der Analog-Digital-Wandler misst das Verhältnis zwischen der Spannung am Analog-Eingang und einer Referenzspannung. Diese Referenzspannung kann beim unserem Micro-Controller auf sehr stabile 1.1V eingestellt werden, ansonsten werden die ca. 5V vom AVCC Bein auch als Referenz verwendet. Bei der voreingestellten Messauflösung von 10 Bit bedeutet ein Messergebnis von 1023 das am Eingang die selbe Spannung war wie die Referenzspannung. Der Wert 512 entspricht der Hälfte der Referenzspannung, also 2.5V, und 256 einem Viertel der Referenzspannung. 
+
+    V_gemessen = messwert * V_referenz / 1023
+
+In manchen Aufbauten schwankt die Spannung am Analog-Eingang weil die Versorgungsspannung von dem was man da angeschlossen hat selbst schon schwankt. Mit einem guten Tiefpassfilter an AVCC sieht man diese Schwankungen als Rauschen in den Messwerten. In diesem Fall kann das gemessene Rauschen durchaus kleiner werden, wenn man AVCC erst gar nicht aufwendig filtert sondern direkt mit der selben Versorgungsspannung verbindet. Der Analog-Digital-Wander misst das Verhältnis zwischen der Eingangsspannung und der Referenzspannung. Wenn beide gleich schwanken, ist das im Verhältnis nicht zu sehen weil das gleich bleibt :)
