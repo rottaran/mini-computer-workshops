@@ -6,7 +6,7 @@ Bezugsquelle | Bestellnummer | Einzelpreis | Beschreibung
 -------------|---------------|------------:|---------------
 Reichelt     | STECKBOARD 1K2V | 3,80 | Experimentier-Steckboard 640/200 Kontakte
 Reichelt     | STECKBOARD DBS  | 4,60 | Steckbrücken-Drahtbrücken-Set
-Pollin       | 510523          | 7,95 | Labor-Steckboard mit 140 Steckbrücken DAYTOOLS SBS-830/140
+Pollin       | 511170          | 7,95 | Labor-Steckboard mit 140 Steckbrücken DAYTOOLS SBS-830/140
 Pollin       | 510523          | 3,95 | Steckbrücken-Sortiment
 
 Von dem Steckbrett/Steckboard/Breadboard wird pro Mini-Computer eines gebraucht. Das 1K2V von Reichelt hat eine bessere Qualität als das 511170 von Pollin. Ein Steckbrücken-Set mit steifen Drähten ist unerlässlich für den Grundaufbau. Zum Beispiel das "STECKBOARD DBS" von Reichelt oder 510523 von Pollin oder das Set 510523 von Pollin.
