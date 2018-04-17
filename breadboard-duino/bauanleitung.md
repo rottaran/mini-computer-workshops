@@ -27,6 +27,14 @@ Den USB-Adapter platzieren: In der Spalte E ziemlich weit oben auf dem Steckbret
 
 Jetzt können wir links (Spalte A-D) die Löcher des Steckbretts verwenden, um Verbindungen zu den Beinchen in Reihe E herzustellen. Ebenso rechts die Spalten G-J, um etwas mit den Micro-Controller Beinchen in Spalte F zu verbinden.
 
+Achtung: Die Beinchen des Micro-Controllers stehen zu weit auseinander und passen so nicht in die richtigen Löcher auf dem Steckbett. Man kann die Beinchen auf jeder Seite vorsichtig (!) ein Stückchen weiter nach innen biegen, indem man den Micro-Controller seitlich auf die Tischplatte drückt.
+
+TODO Foto zum Biegen der Beinchen
+
+Achtung: Der Micro-Controller steckt am Anfang noch nicht richtig in den Löchern drin, so dass einige der Beinchen nicht richtig Kontakt zu den Klammern in ihrem Steckbrett-Loch haben. Unbedingt mit Kraft auf den Micro-Controller drücken so dass er im Steckbrett einrastet. Vorher natürlich gucken, dass alle Beinchen im richtigen Loch sind.
+
+Achtung: Beim Herausziehen des Micro-Controllers kann es sehr schnell passieren, dass er sich ungleichmäßig zuerst nur auf einer Seite löst. Das verbiegt die Beinchen am anderen Ende. Sicherer ist es, den Micro-Controller vorsichtig mit einem dünnen Schraubendreher abwechselnd am unteren und oberen Ende hoch zu hebeln bis er sich aus dem Steckbrett löst.
+
 
 ## Schritt 2) Kommunikation zwischen USB und Micro-Controller
 
@@ -164,7 +172,7 @@ Wechselwirkungen zwischen Spule und Kondensator können dazu führen, dass elekt
 
 ### Schwingen im Gleichtakt
 
-Der Analog-Digital-Wandler misst das Verhältnis zwischen der Spannung am Analog-Eingang und einer Referenzspannung. Diese Referenzspannung kann beim unserem Micro-Controller auf sehr stabile 1.1V eingestellt werden, ansonsten werden die ca. 5V vom AVCC Bein auch als Referenz verwendet. Bei der voreingestellten Messauflösung von 10 Bit bedeutet ein Messergebnis von 1023 das am Eingang die selbe Spannung war wie die Referenzspannung. Der Wert 512 entspricht der Hälfte der Referenzspannung, also 2.5V, und 256 einem Viertel der Referenzspannung. 
+Der Analog-Digital-Wandler misst das Verhältnis zwischen der Spannung am Analog-Eingang und einer Referenzspannung. Diese Referenzspannung kann beim unserem Micro-Controller auf sehr stabile 1.1V eingestellt werden, ansonsten werden die ca. 5V vom AVCC Bein auch als Referenz verwendet. Bei der voreingestellten Messauflösung von 10 Bit bedeutet ein Messergebnis von 1023 das am Eingang die selbe Spannung war wie die Referenzspannung. Der Wert 512 entspricht der Hälfte der Referenzspannung, also 2.5V, und 256 einem Viertel der Referenzspannung.
 
     V_gemessen = messwert * V_referenz / 1023
 
