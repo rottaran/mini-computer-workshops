@@ -33,16 +33,22 @@ Reichelt     | 16,0000-HC49U-S |  0,22 | 1 | Schwingquarz 16MHz
 Reichelt     | KERKO 22P       |  0,05 | 2 | Kondensator 22pF
 Reichelt     | Z5U-2,5 100N    |  0,04 | 3 | Kondensator 100nF
 Reichelt     | SMCC 68µ        |  0,26 | 1 | Drosselspule 68µH
-Reichelt     | AK 669-1,8      |  1,15 | 1 | USB-Verlängerungskabel
+Reichelt     | AK 669-1,8      |  1,15 | 1 | USB-Verlängerungskabel A-Stecker zu A-Buchse, 1,8 m
+Reichelt     | AK 676-AA2      |  1,95 | - | USB 2.0 Kabel, A Stecker auf Micro A Stecker, 1,8 m
 Reichelt     | 1/4W 10K        |  0,10 | 1 | Widerstand 1/4W, 10 K-Ohm
 Ebay         | CP2102 / CP2104 |  1,10 | 1 | USB to UART TTL Converter mit DTR Pin statt RST!
 
 <img align="right" width="200" src="031-usb-adapter.jpg">
+<img align="right" width="200" src="http://img.dxcdn.com/productimages/sku_440805_1.jpg">
 
 Es gibt bei Ebay preisgünstige "USB UART Serial Adapter" mit dem CP2102 oder dem CP2104 Schaltkreis. Die gibt es inzwischen auch mit Micro-USB Buchse. Die Direktimporte aus China kosten ca. 1,10 pro Stück und die Lieferung dauert mindestens 4 Wochen. Bei Deutschen Ebay-Händlern bekommt man sie für ca. 4 Euro, aber dafür ist die Wartezeit geringer und Rechnung mit korrekter Steuernummer möglich. Wichtig ist, dass die Adapter das DTR-Bein haben und sich ins Steckbrett stecken lassen.
 
 * http://stores.ebay.de/eckstein-komponente
 * http://stores.ebay.de/modulink
+
+## Arduino Pro Mini, Arduino Nano und co
+
+[<img align="right" width="200" src="https://store-cdn.arduino.cc/uni/catalog/product/cache/1/image/520x330/604a3538c15e081937dbfbd20aa60aad/A/0/A000005_featured_2.jpg">](https://store.arduino.cc/arduino-nano)
 
 Als Abkürzung gibt es den "Arduino Pro Micro 5V/16MHz Leonardo" mit Micro-USB Anschluss und integriertem USB-Adapter für ca. 8 Euro. Ebenso den "Arduino Nano" für ca. 6 Euro mit USB-Kabel. An beide lassen sich Stiftleisten anlöten so dass sie in das Steckbrett gesteckt werden können. Es kann ganz nützlich sein, einen davon als initiales Programmier-Gerät für unbeschriebene ATmega und ATtiny Mico-Controller zu haben.
 
