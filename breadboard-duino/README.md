@@ -1,4 +1,4 @@
-# Steckbrett-Duino: Arduino-Selbstbau auf Prototyp-Steckbrett
+# Steckbrett-Duino: Arduino-Selbstbau auf Steckbrett
 
 ## Bauanleitung
 
