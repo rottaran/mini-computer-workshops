@@ -38,7 +38,7 @@ Reichelt     | AK 676-AA2      |  1,95 | - | USB 2.0 Kabel, A Stecker auf Micro 
 Reichelt     | 1/4W 10K        |  0,10 | 1 | Widerstand 1/4W, 10 K-Ohm
 Ebay         | CP2102 / CP2104 |  1,10 | 1 | USB to UART TTL Converter mit DTR Pin statt RST!
 
-<img align="right" width="200" src="031-usb-adapter.jpg">
+<img align="right" width="200" src="bilder/usb-adapter.jpg">
 <img align="right" width="200" src="http://img.dxcdn.com/productimages/sku_440805_1.jpg">
 
 Es gibt bei Ebay preisgünstige "USB UART Serial Adapter" mit dem CP2102 oder dem CP2104 Schaltkreis. Die gibt es inzwischen auch mit Micro-USB Buchse. Die Direktimporte aus China kosten ca. 1,10 pro Stück und die Lieferung dauert mindestens 4 Wochen. Bei Deutschen Ebay-Händlern bekommt man sie für ca. 4 Euro, aber dafür ist die Wartezeit geringer und Rechnung mit korrekter Steuernummer möglich. Wichtig ist, dass die Adapter das DTR-Bein haben und sich ins Steckbrett stecken lassen.

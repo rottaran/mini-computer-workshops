@@ -1,6 +1,6 @@
 # Bauanleitung Steckbrett-Duino
 
-<img align="right" width="300" src="010-breadboard-duino.jpg">
+<img align="right" width="300" src="bilder/breadboard-duino.jpg">
 
 Der Arduino Uno (https://store.arduino.cc/arduino-uno-rev3) ist ein Mini-Computer, der sich Dank der Arduino-Umgebung sehr leicht programmieren lässt. Aber ohne Erweiterungsplatinen ist der Arduino an sich sehr langweilig. Wir bauen stattdessen so einen Arduino selber auf einem Steckbrett nach und haben dann auf diesem Steckbrett noch viel Platz für eigene Erweiterungen.
 
@@ -12,7 +12,7 @@ Hinzu kommen einige Drahtverbindungen und ein paar Hilfsbauteile. Im Folgenden w
 
 ## Schaltplan im Überblick
 
-<img align="right" width="300" src="030-base-schematic.jpg">
+<img align="right" width="300" src="bilder/base-schematic.jpg">
 
 Auf dem Schaltplan ist zu sehen, welche Beine der Bauteile über Drahtbrücken miteinander verbunden werden müssen. Zudem sind die Teile genau wie auf dem Steckbrett angeordnet. Der Übersichtlichkeit zuliebe sind nicht alle Löcher des Steckbretts gezeichnet. Die Löcher sind jeweils in jeder Zeile auf der linken sowie separat auf der rechten Hälfte des Steckbretts miteinander verbunden. Da kann jedes Loch der selben Zeile gleichberechtigt benutzt werden -- es muss also nicht unbedingt das Loch direkt neben dem Bauteil-Beinchen sein.
 
