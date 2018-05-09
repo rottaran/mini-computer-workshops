@@ -9,7 +9,7 @@ Reichelt     | STECKBOARD DBS  | 4,60 | Steckbrücken-Drahtbrücken-Set
 Pollin       | 511170          | 7,95 | Labor-Steckboard mit 140 Steckbrücken DAYTOOLS SBS-830/140
 Pollin       | 510523          | 3,95 | Steckbrücken-Sortiment
 
-Von dem Steckbrett/Steckboard/Breadboard wird pro Mini-Computer eines gebraucht. Das 1K2V von Reichelt hat eine bessere Qualität als das 511170 von Pollin. Ein Steckbrücken-Set mit steifen Drähten ist unerlässlich für den Grundaufbau. Zum Beispiel das "STECKBOARD DBS" von Reichelt oder 510523 von Pollin oder das Set 510523 von Pollin.
+Von dem Steckbrett/Steckboard/Breadboard wird pro Mini-Computer eines gebraucht. Das 1K2V von Reichelt hat eine bessere Qualität als das 511170 von Pollin. Ein Steckbrücken-Set mit steifen Drähten ist unerlässlich für den Grundaufbau, weil die flexiblen Drahtbrücken (siehe unten) wenig übersichtlich und manchmal unzuverlässig wackelig sind. 
 
 
 Bezugsquelle | Bestellnummer | Einzelpreis | Beschreibung
@@ -20,7 +20,7 @@ Pollin       | 511159        | 2,95 | Steckboard-Verbindungsleitungen, Kupplung/
 Pollin       | 511158        | 2,95 | Steckboard-Verbindungsleitungen, Stecker/Kupplung, 40-polig
 Pollin       | 511157        | 2,95 | Steckboard-Verbindungsleitungen, Stecker/Stecker, 40-polig
 
-Von den flexiblen Testkabeln braucht man meist nicht so viele, weil die auf Dauer doch zu wackelig sind. Allerdings sind sie sehr nützlich, um Verbindungen zu Bauteilen die nicht auf das Steckbrett passen herzustellen. Es gibt die flexiblen Kabel als Stecker-Stecker (männlich-männlich), Stecker-Buchse (männlich-weiblich) und Buchse-Buchse (weiblich-weiblich).
+Von den flexiblen Testkabeln braucht man meist nicht so viele, weil die auf Dauer doch zu wackelig sind. Allerdings sind sie sehr nützlich, um Verbindungen zu Bauteilen die nicht auf das Steckbrett passen herzustellen. Es gibt die flexiblen Kabel als Stecker-Stecker (männlich-männlich), Stecker-Buchse (männlich-weiblich) und Buchse-Buchse (weiblich-weiblich). Für Verbindungen auf Steckbrettern ist Stecker-Stecker gut, für Verbindungen zwischen Steckbrett und Bauteilen oder anderen Steckern ist Stecker-Buchse nützlich. Falls man noch Buchse-Buchse Kabel übrig hat, z.B. von den USB-Serial Adaptern, dann kann man diese mit Stecker-Stecker Kabeln zu Stecker-Buchse kombinieren. Ist natürlich auch wackelig :)
 
 ## Bauteile für den Mini-Computer ohne Erweiterungen
 
