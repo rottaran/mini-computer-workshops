@@ -33,18 +33,28 @@ Den USB-Adapter platzieren: In der Spalte E ziemlich weit oben auf dem Steckbret
 
 Jetzt können wir links (Spalte A-D) die Löcher des Steckbretts verwenden, um Verbindungen zu den Beinchen in Reihe E herzustellen. Ebenso rechts die Spalten G-J, um etwas mit den Micro-Controller Beinchen in Spalte F zu verbinden.
 
+
 <div style="clear:both"/>
+<img align="right" width="200" src="bilder/101fo-biegen.jpg">
+<img align="right" width="200" src="bilder/101fv-biegen.jpg">
 
 Achtung: Die Beinchen des Micro-Controllers stehen zu weit auseinander und passen so nicht in die richtigen Löcher auf dem Steckbett. Man kann die Beinchen auf jeder Seite vorsichtig (!) ein Stückchen weiter nach innen biegen, indem man den Micro-Controller seitlich auf die Tischplatte drückt.
 
-TODO Foto zum Biegen der Beinchen
 
 <div style="clear:both"/>
 <img align="right" width="200" src="bilder/101fv-druecken.jpg">
 
 Achtung: Der Micro-Controller steckt am Anfang noch nicht richtig in den Löchern drin, so dass einige der Beinchen nicht richtig Kontakt zu den Klammern in ihrem Steckbrett-Loch haben. Unbedingt mit Kraft auf den Micro-Controller drücken so dass er im Steckbrett einrastet. Vorher natürlich gucken, dass alle Beinchen im richtigen Loch sind.
 
+
+<div style="clear:both"/>
+
 Achtung: Beim Herausziehen des Micro-Controllers kann es sehr schnell passieren, dass er sich ungleichmäßig zuerst nur auf einer Seite löst. Das verbiegt die Beinchen am anderen Ende. Sicherer ist es, den Micro-Controller vorsichtig mit einem dünnen Schraubendreher abwechselnd am unteren und oberen Ende hoch zu hebeln bis er sich aus dem Steckbrett löst.
+
+<img align="right" width="200" src="bilder/101fv3-hebeln.jpg">
+<img align="right" width="200" src="bilder/101fv2-hebeln.jpg">
+<img align="right" width="200" src="bilder/101fv1-hebeln.jpg">
+<div style="clear:both"/>
 
 
 ## Schritt 2) Kommunikation zwischen USB und Micro-Controller
