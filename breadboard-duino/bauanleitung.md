@@ -12,7 +12,9 @@ Hinzu kommen einige Drahtverbindungen und ein paar Hilfsbauteile. Im Folgenden w
 
 ## Schaltplan im Überblick
 
-<img align="right" width="300" src="bilder/100-steckbrett-duino.jpg">
+<img align="right" height="200" src="bilder/100a-steckbrett-duino.jpg">
+<img align="right" height="200" src="bilder/107afo2-analog-strom.jpg">
+<img align="right" width="275" src="bilder/107afv-analog-strom.jpg" style="clear:right">
 
 Auf dem Schaltplan ist zu sehen, welche Beine der Bauteile über Drahtbrücken miteinander verbunden werden müssen. Zudem sind die Teile genau wie auf dem Steckbrett angeordnet. Der Übersichtlichkeit zuliebe sind nicht alle Löcher des Steckbretts gezeichnet. Die Löcher sind jeweils in jeder Zeile auf der linken sowie separat auf der rechten Hälfte des Steckbretts miteinander verbunden. Da kann jedes Loch der selben Zeile gleichberechtigt benutzt werden -- es muss also nicht unbedingt das Loch direkt neben dem Bauteil-Beinchen sein.
 
@@ -23,15 +25,22 @@ Achtung: Manche Steckbretter sind zusätzlich in eine untere und obere Hälfte g
 
 ## Schritt 1) USB-Adapter und Micro-Controller platzieren
 
-<img align="right" width="200" src="bilder/101-usb-und-ic.jpg">
+<img align="right" height="200" src="bilder/101-usb-und-ic.jpg">
+<img align="right" height="200" src="bilder/101fo-usb-und-ic.jpg">
+<img align="right" width="275" src="bilder/101fv-usb-und-ic.jpg" style="clear:right">
 
 Den USB-Adapter platzieren: In der Spalte E ziemlich weit oben auf dem Steckbrett. Der Micro-Controller kommt direkt darunter so dass eine Zeile Abstand zum USB-Adapter ist und die einen Beinchen in Spalte E und die anderen Beinchen in Spalte F sind.
 
 Jetzt können wir links (Spalte A-D) die Löcher des Steckbretts verwenden, um Verbindungen zu den Beinchen in Reihe E herzustellen. Ebenso rechts die Spalten G-J, um etwas mit den Micro-Controller Beinchen in Spalte F zu verbinden.
 
+<div style="clear:both"/>
+
 Achtung: Die Beinchen des Micro-Controllers stehen zu weit auseinander und passen so nicht in die richtigen Löcher auf dem Steckbett. Man kann die Beinchen auf jeder Seite vorsichtig (!) ein Stückchen weiter nach innen biegen, indem man den Micro-Controller seitlich auf die Tischplatte drückt.
 
 TODO Foto zum Biegen der Beinchen
+
+<div style="clear:both"/>
+<img align="right" width="200" src="bilder/101fv-druecken.jpg">
 
 Achtung: Der Micro-Controller steckt am Anfang noch nicht richtig in den Löchern drin, so dass einige der Beinchen nicht richtig Kontakt zu den Klammern in ihrem Steckbrett-Loch haben. Unbedingt mit Kraft auf den Micro-Controller drücken so dass er im Steckbrett einrastet. Vorher natürlich gucken, dass alle Beinchen im richtigen Loch sind.
 
@@ -40,13 +49,14 @@ Achtung: Beim Herausziehen des Micro-Controllers kann es sehr schnell passieren,
 
 ## Schritt 2) Kommunikation zwischen USB und Micro-Controller
 
-<img align="right" width="200" src="bilder/102-seriell-kommunikation.jpg">
+<img align="right" height="200" src="bilder/102-seriell-kommunikation.jpg">
+<img align="right" height="200" src="bilder/102fo-seriell-kommunikation.jpg">
+<img align="right" width="275" src="bilder/102fv-seriell-kommunikation.jpg" style="clear:right">
 
 Um Daten und Programme zwischen unserem Computer und den Micro-Controller übertragen zu können, verbinden wir den Micro-Controller mit dem USB-Adapter: Eine Drahtbrücke von der Zeile mit dem RX-Beinchen des USB-Adapters zu der Zeile mit dem TX-Beinchen des Micro-Controllers. Ebenso von dem TX des USB-Adapters zum RX des Micro-Controllers.
 
-Achtung: Manche USB-Serial Adapter haben die Beschriftung RX und TX vertauscht, so dass RX vom USB-Adapter mit RX vom Micro-Controller und TX mit TX verbunden werden müssen. Bei unbekannten Adaptern hilft ausprobieren.
+Achtung: Manche USB-Serial Adapter haben die Beschriftung RX und TX vertauscht, so dass RX vom USB-Adapter mit RX vom Micro-Controller und TX mit TX verbunden werden müssen. Bei unbekannten Adaptern hilft ausprobieren. Eine Leuchtdiode zwischen TX und GND leuchtet, falls sie richtig herum eingesetzt ist. Zwischen RX und GND leuchtet sie nicht. Das liegt daran, dass das TX-Beinchen zum Senden im Normalzustand mit 3.3V oder 5V verbunden ist.
 
-TODO messen? Der TX pin müsste im normalzustand high sein und der RX-Pin nicht?
 
 ### Von TX nach RX
 
@@ -78,7 +88,9 @@ Die Netzwerkkarte und die Graphikkarte im Computer sind über Leitungen basieren
 
 ## Schritt 3) Stromversorgung verbinden
 
-<img align="right" width="200" src="bilder/103-strom-micro-controller.jpg">
+<img align="right" height="200" src="bilder/103-strom-micro-controller.jpg">
+<img align="right" height="200" src="bilder/103fo2-strom-micro-controller.jpg">
+<img align="right" width="275" src="bilder/103fv2-strom-micro-controller.jpg" style="clear:right">
 
 Das "GND" Beinchen des USB-Adapters wird über eine Drahtbrücke mit der linken - Spalte verbunden (meist blau markiert). Das "5V" Beinchen des USB-Adapters mit der linken + Spalte (meist rot markiert).
 
@@ -96,7 +108,9 @@ Weil die Erde einen unerschöpflich erscheinenden Vorrat an frei beweglichen Ele
 
 ## Schritt 4) Energiepuffer in der Stromversorgung
 
-<img align="right" width="200" src="bilder/104-energiepuffer.jpg">
+<img align="right" height="200" src="bilder/104-energiepuffer.jpg">
+<img align="right" height="200" src="bilder/104fo-energiepuffer.jpg">
+<img align="right" width="275" src="bilder/104fv-energiepuffer.jpg" style="clear:right">
 
 Ein 100nF Kondensator (C2) verbindet die beiden Zeilen des VCC und GND Beinchen des Micro-Controllers.
 
@@ -122,17 +136,23 @@ Der kleine Kondensator am VCC und GND Beinchen des Micro-Controllers sorgt für 
 
 ## Schritt 5) 16MHz Taktgenerator anschließen
 
-<img align="right" width="200" src="bilder/105b-taktgenerator.jpg">
-<img align="right" width="200" src="bilder/105a-taktgenerator.jpg">
+<img align="right" height="200" src="bilder/105b-taktgenerator.jpg">
+<img align="right" height="200" src="bilder/105bfo2-taktgenerator.jpg">
+<img align="right" width="275" src="bilder/105bfv3-taktgenerator.jpg" style="clear:right">
 
-An die beiden XTAL-Beinchen des Micro-Controllers wird ein 16MHz Schwingquarz (Q1) angeschlossen. Je ein Bein in ein Loch der oberen Zeile und das andere Bein in die Zeile darunter. Um die Schwingung zu unterstützen kommen noch zwei 22pF Kondensatoren (C3, C4) dazu. Diese sind auf der einen Seite mit der - Spalte verbunden und auf der anderen mit jeweils einer der XTAL-Zeilen.
+An die beiden XTAL-Beinchen des Micro-Controllers wird ein 16MHz Schwingquarz (Q1) angeschlossen. Je ein Bein in ein Loch der oberen Zeile und das andere Bein in die Zeile darunter. Um die Schwingung zu unterstützen kommen noch zwei 22pF Kondensatoren (C3, C4) dazu. Diese sind auf einem Bein mit der GND-Zeile darüber verbunden und auf der anderen mit jeweils einer der XTAL-Zeilen.
+
+<div style="clear:both"/>
+<img align="right" height="200" src="bilder/105a-taktgenerator.jpg">
+
+Alternativ können die beiden 22pF Kondensatoren auch mit einem Bein in der - Spalte links von den XTAL Zeilen stecken.
 
 
 ### 16 Millionen Arbeitsschritte pro Sekunde
 
 Der Micro-Controller hat einen internen Taktgenerator der auf verschiedene Frequenzen wie z.B. 8MHz, 16MHz und höchstens 20MHz eingestellt werden kann. Allerdings läuft er nicht sehr genau. Das würde zum Beispiel Zeitmessungen und Wartezeiten in unseren Programmen ungenau machen. Schlimmer noch: Wenn der Taktgenerator zu schnell läuft, kann es passieren, dass der nächste Arbeitsschritt schon beginnt bevor alle Ergebnisse des vorherigen Arbeitsschritts fertig gespeichert sind. Das würde zu falschen Rechenergebnissen und vielem merkwürdigen Verhalten unseres Mini-Computer führen.
 
-<img align="right" width="300" src="https://upload.wikimedia.org/wikipedia/commons/8/84/Quarzhalter.JPG">
+<img align="right" width="200" src="https://upload.wikimedia.org/wikipedia/commons/8/84/Quarzhalter.JPG">
 
 Der Schwingquarz stabilisiert die Schwingung des Taktgenerators. 16MHz sind 16 Millionen Schwingungen pro Sekunde, also ein Arbeitsschritt alle 62.5ns Nanosekunden. Zum Vergleich: Unsere heutigen Computer laufen je nach Arbeitslast mit 1 bis 4 GHz. Ein GHz entspricht einem Arbeitsschritt jede 1ns. Und bei 4GHz wäre ein Arbeitsschritt nur noch 0.25ns lang. Dahingegen ist unser Mini-Computer mit 16MHz recht langsam -- aber immer noch schnell genug für viele einfache Aufgaben.
 
@@ -145,7 +165,9 @@ Im Englischen wird der Schwingquarz als Crystal bezeichnet und mit "XTAL" abgek�
 
 ## Schritt 6) Automatischer Neustart
 
-<img align="right" width="200" src="bilder/106-auto-reset.jpg">
+<img align="right" height="200" src="bilder/106-auto-reset.jpg">
+<img align="right" height="200" src="bilder/106fo-auto-reset.jpg">
+<img align="right" width="275" src="bilder/106fv-auto-reset.jpg" style="clear:right">
 
 Unser Micro-Controller hat noch ein Problem: Kommen über die Serielle Verbindung (RX-Bein) Daten für das gerade laufende Programm oder soll ein neues Programm übertragen werden? Die Arduino-Lösung ist recht clever: Falls direkt nach dem Neustart des Micro-Controllers Daten kommen, ist es ein neues Programm das in den Speicher geschrieben werden soll. Falls aber eine Sekunde lange nichts kommt, dann wird das aktuell gespeicherte Programm gestartet und dieses kann nun unsere eigenen Daten auf der selben seriellen Leitung empfangen.
 
@@ -165,8 +187,9 @@ Am Ende der Datenübertragung wechselt DTR von 0V zurück auf 3.3V. Der Spannung
 
 ## Schritt 7) Stromversorgung für den Analog-Spannungsmesser
 
-<img align="right" width="200" src="bilder/107b-analog-strom.jpg">
-<img align="right" width="200" src="bilder/107a-analog-strom.jpg">
+<img align="right" height="200" src="bilder/107a-analog-strom.jpg">
+<img align="right" height="200" src="bilder/107afo2-analog-strom.jpg">
+<img align="right" width="275" src="bilder/107afv-analog-strom.jpg" style="clear:right">
 
 Der Micro-Controller hat 6 Analog-Eingänge (A0 bis A5) an denen er kleine Spannungen relativ zum GND Anschluss messen kann. Um die Messgenauigkeit verbessern zu können, haben die Analog-Digital-Wandler eine separate Stromversorgung an den zwei AVCC und AGND Beinchen auf der rechten Seite.
 
@@ -175,7 +198,12 @@ Die einfachste Variante für die Analog-Stromversorgung ist, eine Drahtbrücke v
 Manche Anleitungen empfehlen einen Tiefpass-Filter der hoch-frequente störende Schwingungen aus der Stromversorgung herausfiltert. Dazu wird anstelle der Drahtbrücke von der + Spalte zur AVCC-Zeile eine Drosselspule (L1, z.B. 68mH) eingesetzt, sowie ein 100nF Kondensator (C5) von der GND-Zeile zur AVCC-Zeile. Die Drahtbrücke von der - Spalte zur AGND-Zeile bleibt bestehen.
 
 
+<div style="clear:both"/>
 ### Tiefpass-Filter aus Spulen und Kondensatoren
+
+<img align="right" height="200" src="bilder/107b-analog-strom.jpg">
+<img align="right" height="200" src="bilder/107bfo-analog-strom.jpg">
+<img align="right" width="275" src="bilder/107bfv-analog-strom.jpg" style="clear:right">
 
 Die 5V Gleichspannung, die wir vom USB-Adapter bekommen, ist gar nicht so konstant wie man denken würde. Die Spannung schwankt durch etwas durch den schwankenden Stromverbrauch des Micro-Controllers, des USB-Adapters und anderer Komponenten zwischen Netzteil und USB-Kabel. Zudem sind oft noch Reste der 50Hz Netzfrequenz den 5V beigemischt, weil das Computernetzteil die nicht perfekt weg-geglättet hat. Den meisten USB-Geräten ist das ja auch egal -- nur bei den Spannungsmessungen kann das auffallen.
 
@@ -188,6 +216,10 @@ Für hohe Frequenzen ist die Spule vom + der Stromquelle zum AVCC des Micro-Cont
 Wechselwirkungen zwischen Spule und Kondensator können dazu führen, dass elektrische Energie zwischen beiden hin- und her schwingt. Das wäre nicht gewünscht. Die Drosselspulen sind deswegen so gebaut, dass sie die Energie im magnetischen Feld nicht perfekt speichern und wieder abgeben, sondern möglichst viel davon in Wärme umwandeln.
 
 ### Schwingen im Gleichtakt
+
+<img align="right" height="200" src="bilder/107a-analog-strom.jpg">
+<img align="right" height="200" src="bilder/107afo2-analog-strom.jpg">
+<img align="right" width="275" src="bilder/107afv-analog-strom.jpg" style="clear:right">
 
 Der Analog-Digital-Wandler misst das Verhältnis zwischen der Spannung am Analog-Eingang und einer Referenzspannung. Diese Referenzspannung kann beim unserem Micro-Controller auf sehr stabile 1.1V eingestellt werden, ansonsten werden die ca. 5V vom AVCC Bein auch als Referenz verwendet. Bei der voreingestellten Messauflösung von 10 Bit bedeutet ein Messergebnis von 1023 das am Eingang die selbe Spannung war wie die Referenzspannung. Der Wert 512 entspricht der Hälfte der Referenzspannung, also 2.5V, und 256 einem Viertel der Referenzspannung.
 
