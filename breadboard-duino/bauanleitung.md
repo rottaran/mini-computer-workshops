@@ -12,7 +12,7 @@ Hinzu kommen einige Drahtverbindungen und ein paar Hilfsbauteile. Im Folgenden w
 
 ## Schaltplan im Überblick
 
-<img align="right" width="300" src="bilder/base-schematic.jpg">
+<img align="right" width="300" src="bilder/100-steckbrett-duino.jpg">
 
 Auf dem Schaltplan ist zu sehen, welche Beine der Bauteile über Drahtbrücken miteinander verbunden werden müssen. Zudem sind die Teile genau wie auf dem Steckbrett angeordnet. Der Übersichtlichkeit zuliebe sind nicht alle Löcher des Steckbretts gezeichnet. Die Löcher sind jeweils in jeder Zeile auf der linken sowie separat auf der rechten Hälfte des Steckbretts miteinander verbunden. Da kann jedes Loch der selben Zeile gleichberechtigt benutzt werden -- es muss also nicht unbedingt das Loch direkt neben dem Bauteil-Beinchen sein.
 
@@ -22,6 +22,8 @@ Achtung: Manche Steckbretter sind zusätzlich in eine untere und obere Hälfte g
 
 
 ## Schritt 1) USB-Adapter und Micro-Controller platzieren
+
+<img align="right" width="200" src="bilder/101-usb-und-ic.jpg">
 
 Den USB-Adapter platzieren: In der Spalte E ziemlich weit oben auf dem Steckbrett. Der Micro-Controller kommt direkt darunter so dass eine Zeile Abstand zum USB-Adapter ist und die einen Beinchen in Spalte E und die anderen Beinchen in Spalte F sind.
 
@@ -38,10 +40,13 @@ Achtung: Beim Herausziehen des Micro-Controllers kann es sehr schnell passieren,
 
 ## Schritt 2) Kommunikation zwischen USB und Micro-Controller
 
+<img align="right" width="200" src="bilder/102-seriell-kommunikation.jpg">
+
 Um Daten und Programme zwischen unserem Computer und den Micro-Controller übertragen zu können, verbinden wir den Micro-Controller mit dem USB-Adapter: Eine Drahtbrücke von der Zeile mit dem RX-Beinchen des USB-Adapters zu der Zeile mit dem TX-Beinchen des Micro-Controllers. Ebenso von dem TX des USB-Adapters zum RX des Micro-Controllers.
 
 Achtung: Manche USB-Serial Adapter haben die Beschriftung RX und TX vertauscht, so dass RX vom USB-Adapter mit RX vom Micro-Controller und TX mit TX verbunden werden müssen. Bei unbekannten Adaptern hilft ausprobieren.
 
+TODO messen? Der TX pin müsste im normalzustand high sein und der RX-Pin nicht?
 
 ### Von TX nach RX
 
@@ -73,6 +78,8 @@ Die Netzwerkkarte und die Graphikkarte im Computer sind über Leitungen basieren
 
 ## Schritt 3) Stromversorgung verbinden
 
+<img align="right" width="200" src="bilder/103-strom-micro-controller.jpg">
+
 Das "GND" Beinchen des USB-Adapters wird über eine Drahtbrücke mit der linken - Spalte verbunden (meist blau markiert). Das "5V" Beinchen des USB-Adapters mit der linken + Spalte (meist rot markiert).
 
 Dann kommen zwei lange Drahtbrücken, um die linke + Spalte mit der rechten + Spalte zu verbinden und ebenso die linke - Spalte mit der rechten - Spalte. Nun sind die senkrechten Strom-Spalten des Steckbretts mit der Stromquelle aus dem USB-Adapter verbunden.
@@ -88,6 +95,8 @@ Weil die Erde einen unerschöpflich erscheinenden Vorrat an frei beweglichen Ele
 
 
 ## Schritt 4) Energiepuffer in der Stromversorgung
+
+<img align="right" width="200" src="bilder/104-energiepuffer.jpg">
 
 Ein 100nF Kondensator (C2) verbindet die beiden Zeilen des VCC und GND Beinchen des Micro-Controllers.
 
@@ -113,6 +122,9 @@ Der kleine Kondensator am VCC und GND Beinchen des Micro-Controllers sorgt für 
 
 ## Schritt 5) 16MHz Taktgenerator anschließen
 
+<img align="right" width="200" src="bilder/105b-taktgenerator.jpg">
+<img align="right" width="200" src="bilder/105a-taktgenerator.jpg">
+
 An die beiden XTAL-Beinchen des Micro-Controllers wird ein 16MHz Schwingquarz (Q1) angeschlossen. Je ein Bein in ein Loch der oberen Zeile und das andere Bein in die Zeile darunter. Um die Schwingung zu unterstützen kommen noch zwei 22pF Kondensatoren (C3, C4) dazu. Diese sind auf der einen Seite mit der - Spalte verbunden und auf der anderen mit jeweils einer der XTAL-Zeilen.
 
 
@@ -133,6 +145,8 @@ Im Englischen wird der Schwingquarz als Crystal bezeichnet und mit "XTAL" abgek�
 
 ## Schritt 6) Automatischer Neustart
 
+<img align="right" width="200" src="bilder/106-auto-reset.jpg">
+
 Unser Micro-Controller hat noch ein Problem: Kommen über die Serielle Verbindung (RX-Bein) Daten für das gerade laufende Programm oder soll ein neues Programm übertragen werden? Die Arduino-Lösung ist recht clever: Falls direkt nach dem Neustart des Micro-Controllers Daten kommen, ist es ein neues Programm das in den Speicher geschrieben werden soll. Falls aber eine Sekunde lange nichts kommt, dann wird das aktuell gespeicherte Programm gestartet und dieses kann nun unsere eigenen Daten auf der selben seriellen Leitung empfangen.
 
 Nun braucht es nur noch einen Weg, um den Micro-Controller im "richtigen" Moment neu starten zu können: Dies wird mit dem 100nF Kondensator (C1) und dem 10kOhm Widerstand (R1) erreicht. Der Widerstand verbindet die senkrechte + Spalte mit der Zeile in dem das Reset-Beinchen (RST) des Micro-Controllers steckt. Der Kondensator verbindet die RST-Zeile mit der Zeile in der das DTR-Beinchen des USB-Adapters steckt.
@@ -150,6 +164,9 @@ Am Ende der Datenübertragung wechselt DTR von 0V zurück auf 3.3V. Der Spannung
 
 
 ## Schritt 7) Stromversorgung für den Analog-Spannungsmesser
+
+<img align="right" width="200" src="bilder/107b-analog-strom.jpg">
+<img align="right" width="200" src="bilder/107a-analog-strom.jpg">
 
 Der Micro-Controller hat 6 Analog-Eingänge (A0 bis A5) an denen er kleine Spannungen relativ zum GND Anschluss messen kann. Um die Messgenauigkeit verbessern zu können, haben die Analog-Digital-Wandler eine separate Stromversorgung an den zwei AVCC und AGND Beinchen auf der rechten Seite.
 
