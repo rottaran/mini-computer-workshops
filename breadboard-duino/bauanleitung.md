@@ -186,6 +186,8 @@ Nun braucht es nur noch einen Weg, um den Micro-Controller im "richtigen" Moment
 
 ### Von Data-Transmission-Ready zum Neustarten
 
+<img align="right" height="300" src="bilder/106-spannungsteiler.jpg">
+
 Das DTR-Beinchen des USB-Adapters steht für "Data Transmission Ready", auf Deutsch "Daten-Transfer beginnt". Normalerweise ist es auf HIGH-Spannung, was am USB-Adapter 3.3V ist. Solange am Computer ein Programm die serielle Verbindung des USB-Adapters öffnet, wechselt das DTR-Beinchen auf LOW-Spannung, also 0V.
 
 Der Wechsel von 3.3V zu 0V am DTR-Beinchen führt dazu, dass der Spannungsunterschied zwischen den beiden Beinen des Kondensators (C1) größer wird und deswegen das elektrische Feld im Kondensator wachsen will. Dies führt dazu, dass ein Aufladestrom von der + Spalte (5V) über den 10kOhm Widerstand (R1) in den Kondensator fließt.
