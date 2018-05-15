@@ -48,13 +48,11 @@ Achtung: Der Micro-Controller steckt am Anfang noch nicht richtig in den Löcher
 
 
 <div style="clear:both"/>
-
-Achtung: Beim Herausziehen des Micro-Controllers kann es sehr schnell passieren, dass er sich ungleichmäßig zuerst nur auf einer Seite löst. Das verbiegt die Beinchen am anderen Ende. Sicherer ist es, den Micro-Controller vorsichtig mit einem dünnen Schraubendreher abwechselnd am unteren und oberen Ende hoch zu hebeln bis er sich aus dem Steckbrett löst.
-
 <img align="right" width="200" src="bilder/101fv3-hebeln.jpg">
 <img align="right" width="200" src="bilder/101fv2-hebeln.jpg">
 <img align="right" width="200" src="bilder/101fv1-hebeln.jpg">
-<div style="clear:both"/>
+
+Achtung: Beim Herausziehen des Micro-Controllers kann es sehr schnell passieren, dass er sich ungleichmäßig zuerst nur auf einer Seite löst. Das verbiegt die Beinchen am anderen Ende. Sicherer ist es, den Micro-Controller vorsichtig mit einem dünnen Schraubendreher abwechselnd am unteren und oberen Ende hoch zu hebeln bis er sich aus dem Steckbrett löst.
 
 
 ## Schritt 2) Kommunikation zwischen USB und Micro-Controller
