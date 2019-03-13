@@ -8,3 +8,10 @@
 * http://forums.adafruit.com/viewtopic.php?f=44&t=18957&p=98175#p98175 ATmega328 Label zum Ausdrucken und Aufkleben
 * https://learn.adafruit.com/boarduino-kits
 * http://www.adafruit.com/categories/19
+
+
+## Informatik ohne Strom
+
+* http://ilearnit.ch/de/stromlos.html
+* https://csunplugged.org/en/
+* https://classic.csunplugged.org/
