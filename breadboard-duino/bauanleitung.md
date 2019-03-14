@@ -209,6 +209,7 @@ Manche Anleitungen empfehlen einen Tiefpass-Filter der hoch-frequente störende 
 
 
 <div style="clear:both"/>
+
 ### Tiefpass-Filter aus Spulen und Kondensatoren
 
 <img align="right" height="200" src="bilder/107b-analog-strom.jpg">
