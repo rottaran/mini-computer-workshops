@@ -5,9 +5,7 @@ import time
 
 i2c = machine.I2C(1, scl=machine.Pin(22), sda=machine.Pin(21), freq=400000)
 pca = servo.PCA9685(i2c)
-pca.reset()
 touch = mpr121.MPR121(i2c)
-touch.reset()
 
 s1 = servo.Servo(pca, 15)
 s2 = servo.Servo(pca, 14)

@@ -91,3 +91,30 @@ class Servo:
 
     def release(self):
         self.pca9685.duty(self.index, 0)
+
+class DRV8833:
+    def __init__(self, pca, a1, a2):
+        self.pca = pca
+        self.a1 = a1
+        self.a2 = a2
+        self.pca.freq(1526)
+        self.max = 4095
+        self.min = 0
+
+    def drive(self, power):
+        span = self.max - self.min
+        if power < 0:
+            p = self.min + (-power)*span/100
+            self.pca.duty(self.a1, 0)
+            self.pca.duty(self.a2, int(p))            
+        elif power > 0:
+            p = self.min + power*span/100
+            self.pca.duty(self.a1, int(p))
+            self.pca.duty(self.a2, 0)
+        else:
+            self.pca.duty(self.a1, 4095)
+            self.pca.duty(self.a2, 4095)
+
+    def stop():
+        self.pca.duty(self.a1, 4095)
+        self.pca.duty(self.a2, 4095)
