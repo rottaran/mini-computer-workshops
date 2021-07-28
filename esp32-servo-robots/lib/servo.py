@@ -115,6 +115,6 @@ class DRV8833:
             self.pca.duty(self.a1, 4095)
             self.pca.duty(self.a2, 4095)
 
-    def stop():
+    def stop(self):
         self.pca.duty(self.a1, 4095)
         self.pca.duty(self.a2, 4095)
